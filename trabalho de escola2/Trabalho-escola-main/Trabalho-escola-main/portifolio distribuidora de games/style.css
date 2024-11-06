@@ -186,12 +186,84 @@ nav ul li a:hover {
 }
 
 #video-container {
-    margin-top: 20px;
     display: none;
+    position: fixed; /* Fixado na tela */
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Ocupa a largura da tela */
+    height: 100vh; /* Ocupa a altura da tela */
+    background-color: black;  /* Fundo preto */
+    z-index: 9999;  /* Certifica-se de que está acima de outros elementos */
+    justify-content: center;
+    align-items: center;
 }
 
-video {
-    max-width: 100%;
-    height: auto;
+#video-container iframe, #video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Faz o vídeo cobrir toda a tela sem distorcer */
 }
 
+/* Seção Newsletter */
+.newsletter {
+    background-color: #3a3a3a;
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.newsletter h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+.newsletter p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+#newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#newsletter-form input {
+    padding: 15px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#newsletter-form input:focus {
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    outline: none;
+}
+
+#newsletter-form button {
+    background-color: #ffcc00;
+    padding: 15px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    color: #333;
+}
+
+#newsletter-form button:hover {
+    background-color: #ffc700;
+    transform: translateY(-5px);
+}

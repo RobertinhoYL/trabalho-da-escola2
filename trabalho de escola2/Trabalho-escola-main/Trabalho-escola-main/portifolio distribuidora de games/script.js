@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('dark-mode');
     });
 
-   
+    // Lazy load das imagens
     const lazyImages = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imageObserver.observe(img);
     });
 
-   
+    // Lógica de busca de vídeo
     const videoSearchButton = document.getElementById('video-search-button');
     const keywordInput = document.getElementById('keyword');
     const videoContainer = document.getElementById('video-container');
@@ -33,17 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const apiKey = 'SUA_API_KEY'; 
             const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(keyword)}&key=${apiKey}`);
             const data = await response.json();
-            videoContainer.innerHTML = '';
+            videoContainer.innerHTML = ''; // Limpa o conteúdo do container de vídeo
 
             if (data.items && data.items.length > 0) {
-                videoContainer.style.display = 'block';
+                videoContainer.style.display = 'flex'; // Torna o container visível
                 data.items.forEach(item => {
                     const videoId = item.id.videoId;
-                    const videoElement = document.createElement('iframe');
-                    videoElement.src = `https://www.youtube.com/embed/${videoId}`;
-                    videoElement.width = '560';
-                    videoElement.height = '315';
-                    videoElement.allowFullscreen = true;
+                    const videoElement = document.createElement('video');
+                    videoElement.src = `https://www.youtube.com/watch?v=${videoId}`; // Usando a URL de YouTube
+                    videoElement.autoplay = true;
+                    videoElement.muted = true;   // Mudo inicialmente
+                    videoElement.loop = true;    // Faz o vídeo rodar em loop
+                    videoElement.controls = true; // Adiciona controles de reprodução
+
+                    // Adiciona o vídeo ao container
                     videoContainer.appendChild(videoElement);
                 });
             } else {
