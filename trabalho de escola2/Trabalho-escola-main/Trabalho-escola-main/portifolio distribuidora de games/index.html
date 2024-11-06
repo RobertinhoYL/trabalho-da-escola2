@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkylineGaming Networks - Destaques</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        #video-container {
+            display: none; 
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">SkylineGaming<span>Networks</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="most-sold.html">Mais Vendidos</a></li>
+                    <li><a href="news.html">Novidades</a></li>
+                    <li><a href="categories.html">Categorias</a></li>
+                    <li><a href="sales.html">Promoções</a></li>
+                </ul>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="dark-mode-toggle" aria-label="Alternar modo escuro/claro">
+                    <label for="dark-mode-toggle">🌙</label>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Descubra o futuro dos jogos digitais</h1>
+            <p>A melhor plataforma para jogos digitais. Descubra novos títulos, aproveite ofertas exclusivas e muito mais.</p>
+            <a href="sales.html" class="cta-btn">Explore Promoções</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- aqui e onde vai ficar os games e blablabla te expliquei issso em call  -->
+        <section class="featured-games">
+            <div class="container">
+                <h2>Jogos em Destaque</h2>
+                <div class="games-grid">
+                    <article class="game-item">
+                        <img src="kingdomCome.jpg" alt="Jogo 1">
+                        <h3>kingdomCome</h3>
+                        <p>RPG - R$49.99</p>
+                        <button class="buy-btn">Comprar</button>
+                    </article>
+                    <article class="game-item">
+                        <img src="eldenring.jpg" alt="Jogo 2">
+                        <h3>Elden Ring</h3>
+                        <p>RPG - R$149.99</p>
+                        <button class="buy-btn">Comprar</button>
+                    </article>
+                    <article class="game-item">
+                        <img src="blackwukong.jpg" alt="Jogo 3">
+                        <h3>Black myth Wukong</h3>
+                        <p>RPG - R$199.99</p>
+                        <button class="buy-btn">Comprar</button>
+                    </article>
+                </div>
+            </div>
+            <section class="featured-games">
+                <div class="container">
+                    
+                    <div class="games-grid">
+                        <article class="game-item">
+                            <img src="valheim.jpg" alt="Jogo 1">
+                            <h3>Valheim</h3>
+                            <p>Sobrevivência - R$30.00</p>
+                            <button class="buy-btn">Comprar</button>
+                        </article>
+                        <article class="game-item">
+                            <img src="terraria.jpg" alt="Jogo 2">
+                            <h3>Terraria</h3>
+                            <p>Sobrevivência - R$23,00</p>
+                            <button class="buy-btn">Comprar</button>
+                        </article>
+                        <article class="game-item">
+                            <img src="ddlc.jpg" alt="Jogo 3">
+                            <h3>Doki Doki literature club!</h3>
+                            <p>Visual novel - Gratis</p>
+                            <button class="buy-btn">Comprar</button>
+                        </article>
+                    </div>
+                </div>
+        </section>
+
+        
+
+
+
+        <section class="newsletter">
+            <div class="container">
+                <h2>Fique por dentro das novidades</h2>
+                <p>Assine nossa newsletter e receba as últimas notícias e ofertas exclusivas diretamente no seu e-mail.</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Seu e-mail" required>
+                    <button type="submit">Assinar</button>
+                </form>
+            </div>
+        </section>
+
+        
+        <section class="video-search">
+            <div class="container">
+                <h2>Veja um vídeo relacionado</h2>
+                <input type="text" id="keyword" placeholder="Digite a palavra-chave">
+                <div id="video-container">
+                    <h2>Vídeo:</h2>
+                    <video width="600" controls>
+                        <source id="video-source" src="" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SkylineGaming Networks. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // não to conseguindo fazer isso da carto aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        const keywordInput = document.getElementById('keyword');
+        const videoContainer = document.getElementById('video-container');
+        const videoSource = document.getElementById('video-source');
+
+        keywordInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const keyword = keywordInput.value.toLowerCase();
+                if (keyword === 'sillibily') { 
+                    videoSource.src = 'whasouserios.mp4'; 
+                    videoContainer.style.display = 'block'; 
+                    videoSource.parentElement.load(); 
+                } else {
+                    alert('Palavra-chave não encontrada.');
+                }
+                keywordInput.value = ''; 
+            }
+        });
+    </script>
+</body>
+</html>
