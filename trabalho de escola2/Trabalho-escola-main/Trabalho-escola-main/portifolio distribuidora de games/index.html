@@ -8,8 +8,8 @@
     <script src="script.js" defer></script>
     <style>
         #video-container {
-            display: none; 
-            margin-top: 20px; 
+            display: none;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -42,60 +42,49 @@
     </section>
 
     <main>
-        <!-- aqui e onde vai ficar os games e blablabla te expliquei issso em call  -->
         <section class="featured-games">
             <div class="container">
                 <h2>Jogos em Destaque</h2>
                 <div class="games-grid">
                     <article class="game-item">
-                        <img src="kingdomCome.jpg" alt="Jogo 1">
-                        <h3>kingdomCome</h3>
+                        <img src="kingdomCome.jpg" alt="Jogo Kingdom Come">
+                        <h3>Kingdom Come</h3>
                         <p>RPG - R$49.99</p>
                         <button class="buy-btn">Comprar</button>
                     </article>
                     <article class="game-item">
-                        <img src="eldenring.jpg" alt="Jogo 2">
+                        <img src="eldenring.jpg" alt="Jogo Elden Ring">
                         <h3>Elden Ring</h3>
                         <p>RPG - R$149.99</p>
                         <button class="buy-btn">Comprar</button>
                     </article>
                     <article class="game-item">
-                        <img src="blackwukong.jpg" alt="Jogo 3">
-                        <h3>Black myth Wukong</h3>
+                        <img src="blackwukong.jpg" alt="Jogo Black Myth Wukong">
+                        <h3>Black Myth Wukong</h3>
                         <p>RPG - R$199.99</p>
+                        <button class="buy-btn">Comprar</button>
+                    </article>
+                    <article class="game-item">
+                        <img src="valheim.jpg" alt="Jogo Valheim">
+                        <h3>Valheim</h3>
+                        <p>Sobrevivência - R$30.00</p>
+                        <button class="buy-btn">Comprar</button>
+                    </article>
+                    <article class="game-item">
+                        <img src="terraria.jpg" alt="Jogo Terraria">
+                        <h3>Terraria</h3>
+                        <p>Sobrevivência - R$23.00</p>
+                        <button class="buy-btn">Comprar</button>
+                    </article>
+                    <article class="game-item">
+                        <img src="ddlc.jpg" alt="Jogo Doki Doki Literature Club!">
+                        <h3>Doki Doki Literature Club!</h3>
+                        <p>Visual Novel - Grátis</p>
                         <button class="buy-btn">Comprar</button>
                     </article>
                 </div>
             </div>
-            <section class="featured-games">
-                <div class="container">
-                    
-                    <div class="games-grid">
-                        <article class="game-item">
-                            <img src="valheim.jpg" alt="Jogo 1">
-                            <h3>Valheim</h3>
-                            <p>Sobrevivência - R$30.00</p>
-                            <button class="buy-btn">Comprar</button>
-                        </article>
-                        <article class="game-item">
-                            <img src="terraria.jpg" alt="Jogo 2">
-                            <h3>Terraria</h3>
-                            <p>Sobrevivência - R$23,00</p>
-                            <button class="buy-btn">Comprar</button>
-                        </article>
-                        <article class="game-item">
-                            <img src="ddlc.jpg" alt="Jogo 3">
-                            <h3>Doki Doki literature club!</h3>
-                            <p>Visual novel - Gratis</p>
-                            <button class="buy-btn">Comprar</button>
-                        </article>
-                    </div>
-                </div>
         </section>
-
-        
-
-
 
         <section class="newsletter">
             <div class="container">
@@ -108,15 +97,13 @@
             </div>
         </section>
 
-        
         <section class="video-search">
             <div class="container">
-                <h2>Veja um vídeo relacionado</h2>
-                <input type="text" id="keyword" placeholder="Digite a palavra-chave">
-                <div id="video-container">
-                    <h2>Vídeo:</h2>
-                    <video width="600" controls>
-                        <source id="video-source" src="" type="video/mp4">
+                <h2>Procurar Vídeos</h2>
+                <input type="text" id="keyword" placeholder="Digite uma palavra-chave">
+                <div id="video-container" class="hidden">
+                    <video id="video-element" controls>
+                        <source id="video-source" src="assets/video.mp4" type="video/mp4">
                         Seu navegador não suporta o elemento de vídeo.
                     </video>
                 </div>
@@ -131,22 +118,41 @@
     </footer>
 
     <script>
-        // não to conseguindo fazer isso da carto aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
         const keywordInput = document.getElementById('keyword');
         const videoContainer = document.getElementById('video-container');
         const videoSource = document.getElementById('video-source');
 
+        const videoMap = {
+            'beatbox': 'whasouserios.mp4',
+            'malmalmal': 'pipocacomsal.mp4',
+            'uwu': 'karate_mendigo.mp4',
+            'anotherkeyword': 'anothervideo.mp4',
+            'fazbear': 'farbear.mp4',
+            'a': 'a.mp4',
+            'phone': 'quebro.mp4',
+            'sad': 'robloxtragedy.mp4',
+            'troll': 'troll.mp4',
+            'butter': 'manteiga.mp4'
+        };
+
         keywordInput.addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
                 const keyword = keywordInput.value.toLowerCase();
-                if (keyword === 'sillibily') { 
-                    videoSource.src = 'whasouserios.mp4'; 
-                    videoContainer.style.display = 'block'; 
-                    videoSource.parentElement.load(); 
+                if (videoMap[keyword]) {
+                    videoSource.src = videoMap[keyword];
+                    videoContainer.style.display = 'flex';
+                    videoSource.parentElement.load();
                 } else {
                     alert('Palavra-chave não encontrada.');
                 }
-                keywordInput.value = ''; 
+                keywordInput.value = '';
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                videoContainer.style.display = 'none';
+                videoSource.src = '';
             }
         });
     </script>
